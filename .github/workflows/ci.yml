@@ -41,6 +41,11 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # Explicit install — puppeteer's postinstall only runs on a cold pnpm
+      # store, so a cache hit would otherwise leave pa11y with no browser.
+      - name: Install Chrome for pa11y
+        run: pnpm exec puppeteer browsers install chrome
+
       - name: Accessibility (WCAG2AA)
         run: |
           pnpm preview &

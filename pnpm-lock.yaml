@@ -33,6 +33,9 @@ importers:
       pa11y-ci:
         specifier: ^4.1.1
         version: 4.1.1(typescript@6.0.3)
+      puppeteer:
+        specifier: 24.43.1
+        version: 24.43.1(typescript@6.0.3)
       typescript-eslint:
         specifier: ^8.63.0
         version: 8.63.0(eslint@10.6.0)(typescript@6.0.3)

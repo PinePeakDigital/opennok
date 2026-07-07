@@ -8,11 +8,11 @@ export const languages = {
 
 export const defaultLang: keyof typeof languages = "en";
 
-export const ui = {
-	en: {
+const en = {
 		"site.title": "OpenNOK",
 		"site.tagline": "A free, open guide to building a next-of-kin box",
 		"nav.home": "Home",
+		"nav.main": "Main navigation",
 		"nav.guide": "The guide",
 		"nav.glossary": "Glossary",
 		"nav.skip": "Skip to main content",
@@ -32,7 +32,11 @@ export const ui = {
 		"footer.privacy.body":
 			"This site has no accounts and no backend. Anything you type or check off stays in your own browser. We collect no analytics.",
 		"footer.license": "Content licensed CC BY 4.0. Code licensed MIT.",
-	},
 } as const;
 
-export type UiKey = keyof (typeof ui)[typeof defaultLang];
+export type UiKey = keyof typeof en;
+
+// Typed so a new locale must supply every UiKey — missing strings fail the build.
+export const ui: Record<keyof typeof languages, Record<UiKey, string>> = {
+	en,
+};

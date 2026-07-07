@@ -11,6 +11,9 @@ interface Props {
 
 const { title, description } = Astro.props;
 const t = useTranslations();
+const siteTitle = t("site.title");
+// Pages pass their bare title; the site name is appended here (except on home).
+const fullTitle = title === siteTitle ? siteTitle : `${title} — ${siteTitle}`;
 ---
 
 <!doctype html>
@@ -20,7 +23,7 @@ const t = useTranslations();
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{fullTitle}</title>
 		{description && <meta name="description" content={description} />}
 	</head>
 	<body>

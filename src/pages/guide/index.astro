@@ -9,7 +9,7 @@ const sections = (await getCollection("guide", ({ data }) => !data.draft)).sort(
 );
 ---
 
-<Layout title={`${t("guide.title")} — ${t("site.title")}`} description={t("guide.intro")}>
+<Layout title={t("guide.title")} description={t("guide.intro")}>
 	<div class="prose">
 		<h1>{t("guide.title")}</h1>
 		<p>{t("guide.intro")}</p>

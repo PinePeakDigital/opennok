@@ -1,13 +1,18 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+// Fields shared by any ordered, titled page-like collection.
+const pageMeta = {
+	title: z.string(),
+	description: z.string(),
+	order: z.number().default(999),
+};
+
 // Guide sections — the core walkthrough content. i18n later = per-locale glob.
 const guide = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/guide" }),
 	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		order: z.number().default(999),
+		...pageMeta,
 		lastReviewed: z.coerce.date().optional(),
 		draft: z.boolean().default(false),
 	}),
@@ -25,11 +30,7 @@ const glossary = defineCollection({
 // Printable templates — checklists and forms rendered to print-friendly pages.
 const templates = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/templates" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		order: z.number().default(999),
-	}),
+	schema: z.object({ ...pageMeta }),
 });
 
 export const collections = { guide, glossary, templates };

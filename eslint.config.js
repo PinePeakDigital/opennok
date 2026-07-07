@@ -15,6 +15,13 @@ export default tseslint.config(
 	tseslint.configs.recommended,
 	astro.configs.recommended,
 	{
+		// Hand the TS parser to astro-eslint-parser so TS in .astro frontmatter
+		// (e.g. `interface Props`) parses instead of erroring. Required by
+		// eslint-plugin-astro; without it the lint job fails to parse components.
+		files: ["**/*.astro"],
+		languageOptions: { parserOptions: { parser: tseslint.parser } },
+	},
+	{
 		// no-literal-string only on real TS/component code, not the dictionary
 		// itself (ui.ts IS the allowed home for literal copy) or config.
 		files: ["src/**/*.{ts,astro}"],

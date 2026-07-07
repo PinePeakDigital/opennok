@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+# Read-only: this job builds/lints untrusted PR code and never needs write access.
+permissions:
+  contents: read
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -37,6 +41,8 @@ jobs:
           pnpm exec pa11y-ci
 
       # Serves dist/ as the web root so root-relative internal links resolve,
-      # and checks external citation links for rot.
+      # and checks external citation links for rot. --retry rides out transient
+      # 429s; if external flakiness ever gates unrelated PRs, split external
+      # checking into a scheduled job.
       - name: Link check
-        run: npx --yes linkinator ./dist --recurse --silent
+        run: pnpm exec linkinator ./dist --recurse --retry --silent

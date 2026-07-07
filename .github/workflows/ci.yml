@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Cancel superseded runs on rapid pushes to the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Read-only: this job builds/lints untrusted PR code and never needs write access.
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # onlyBuiltDependencies (package.json) lets puppeteer fetch Chromium here,
+      # which pa11y needs for the a11y check below.
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint (incl. no-hardcoded-strings)
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      # Explicit install — puppeteer's postinstall only runs on a cold pnpm
+      # store, so a cache hit would otherwise leave pa11y with no browser.
+      - name: Install Chrome for pa11y
+        run: pnpm exec puppeteer browsers install chrome
+
+      - name: Accessibility (WCAG2AA)
+        run: |
+          pnpm preview &
+          for i in $(seq 1 60); do curl -sf http://localhost:4321/ >/dev/null && break; sleep 0.5; done
+          pnpm exec pa11y-ci
+
+      # Serves dist/ as the web root so root-relative internal links resolve,
+      # and checks external citation links for rot. --retry rides out transient
+      # 429s; if external flakiness ever gates unrelated PRs, split external
+      # checking into a scheduled job.
+      - name: Link check
+        run: pnpm exec linkinator ./dist --recurse --retry --silent

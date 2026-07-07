@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations } from "../../i18n/utils";
+
+export async function getStaticPaths() {
+	const sections = await getCollection("guide", ({ data }) => !data.draft);
+	return sections.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const t = useTranslations();
+
+const reviewed = entry.data.lastReviewed?.toISOString().slice(0, 10);
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+	<article class="prose">
+		<h1>{entry.data.title}</h1>
+		<Content />
+		{
+			reviewed && (
+				<p class="reviewed">
+					{t("guide.lastReviewed")}: <time datetime={reviewed}>{reviewed}</time>
+				</p>
+			)
+		}
+	</article>
+</Layout>
+
+<style>
+	.reviewed {
+		margin-top: var(--space-12);
+		color: var(--text-muted);
+		font-size: var(--text-sm);
+		font-family: var(--font-sans);
+	}
+</style>

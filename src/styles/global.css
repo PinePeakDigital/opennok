@@ -1,0 +1,203 @@
+/*
+ * OpenNOK design system — calm, plain, typography-led.
+ * Tokens first, then base element styles. Light is the default; dark is
+ * applied via prefers-color-scheme and can be forced with [data-theme].
+ * Contrast targets: body/link vs background >= 4.5:1 (WCAG AA text),
+ * large headings >= 3:1. Values below are chosen to clear AA with margin.
+ */
+
+:root {
+	/* Type scale — ratio 1.2, base 1.125rem (18px) for an older/stressed audience */
+	--font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+	--text-xs: 0.833rem;
+	--text-sm: 0.9rem;
+	--text-base: 1.125rem;
+	--text-lg: 1.35rem;
+	--text-xl: 1.62rem;
+	--text-2xl: 1.944rem;
+	--text-3xl: 2.33rem;
+
+	--leading: 1.6;
+	--leading-tight: 1.25;
+	--measure: 42rem; /* readable line length */
+
+	/* Spacing — 4px base */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-12: 3rem;
+	--space-16: 4rem;
+
+	--radius: 0.5rem;
+	--border-width: 1px;
+
+	/* Color — light (default) */
+	--bg: #fbfaf8;
+	--surface: #f2efe9;
+	--text: #1a1a1a; /* ~18:1 on --bg */
+	--text-muted: #565049; /* ~7:1 on --bg */
+	--link: #1a5276; /* ~8:1 on --bg */
+	--link-hover: #123a52;
+	--border: #d9d3c9;
+	--accent: #6b4f2a; /* warm, serious */
+	--focus: #1a5276;
+	--note-bg: #eef4f7;
+	--note-border: #1a5276;
+	--warn-bg: #fbf1e6;
+	--warn-border: #9a5b1c;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #16181c;
+		--surface: #1f2228;
+		--text: #e8e6e2; /* very high contrast on --bg */
+		--text-muted: #b0aaa1; /* ~8:1 on --bg */
+		--link: #86bde0; /* ~8:1 on --bg */
+		--link-hover: #aad3ef;
+		--border: #343841;
+		--accent: #cdae82;
+		--focus: #86bde0;
+		--note-bg: #16242c;
+		--note-border: #86bde0;
+		--warn-bg: #2a2016;
+		--warn-border: #d9a15c;
+	}
+}
+
+/* Manual override hooks for a future theme toggle */
+:root[data-theme="light"] {
+	color-scheme: light;
+}
+:root[data-theme="dark"] {
+	color-scheme: dark;
+	--bg: #16181c;
+	--surface: #1f2228;
+	--text: #e8e6e2;
+	--text-muted: #b0aaa1;
+	--link: #86bde0;
+	--link-hover: #aad3ef;
+	--border: #343841;
+	--accent: #cdae82;
+	--focus: #86bde0;
+	--note-bg: #16242c;
+	--note-border: #86bde0;
+	--warn-bg: #2a2016;
+	--warn-border: #d9a15c;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--font-serif);
+	font-size: var(--text-base);
+	line-height: var(--leading);
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--font-sans);
+	line-height: var(--leading-tight);
+	margin: 0 0 var(--space-4);
+	text-wrap: balance;
+}
+h1 { font-size: var(--text-3xl); margin-top: 0; }
+h2 { font-size: var(--text-2xl); margin-top: var(--space-12); }
+h3 { font-size: var(--text-xl); margin-top: var(--space-8); }
+h4 { font-size: var(--text-lg); margin-top: var(--space-6); }
+
+p, ul, ol { margin: 0 0 var(--space-4); }
+li { margin-bottom: var(--space-2); }
+
+a {
+	color: var(--link);
+	text-underline-offset: 0.15em;
+}
+a:hover { color: var(--link-hover); }
+
+:focus-visible {
+	outline: 3px solid var(--focus);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+hr {
+	border: none;
+	border-top: var(--border-width) solid var(--border);
+	margin: var(--space-8) 0;
+}
+
+code, pre { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* Layout helpers */
+.container {
+	width: 100%;
+	max-width: 60rem;
+	margin-inline: auto;
+	padding-inline: var(--space-4);
+}
+.prose { max-width: var(--measure); }
+
+.skip-link {
+	position: absolute;
+	left: var(--space-2);
+	top: -3rem;
+	background: var(--bg);
+	color: var(--link);
+	padding: var(--space-2) var(--space-4);
+	border: var(--border-width) solid var(--border);
+	border-radius: var(--radius);
+	z-index: 10;
+	transition: top 0.15s ease;
+}
+.skip-link:focus {
+	top: var(--space-2);
+}
+
+/* Callouts */
+.note, .warn {
+	border-left: 4px solid var(--note-border);
+	background: var(--note-bg);
+	padding: var(--space-4);
+	border-radius: 0 var(--radius) var(--radius) 0;
+	margin: 0 0 var(--space-6);
+}
+.warn {
+	border-left-color: var(--warn-border);
+	background: var(--warn-bg);
+}
+
+main {
+	flex: 1;
+	padding-block: var(--space-8) var(--space-16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

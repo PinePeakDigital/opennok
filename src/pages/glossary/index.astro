@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations();
+const terms = (await getCollection("glossary")).sort((a, b) =>
+	a.data.term.localeCompare(b.data.term),
+);
+const rendered = await Promise.all(
+	terms.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+---
+
+<Layout title={`${t("glossary.title")} — ${t("site.title")}`} description={t("glossary.intro")}>
+	<div class="prose">
+		<h1>{t("glossary.title")}</h1>
+		<p>{t("glossary.intro")}</p>
+		<dl>
+			{
+				rendered.map(({ entry, Content }) => (
+					<div class="entry">
+						<dt id={entry.id}>{entry.data.term}</dt>
+						<dd>
+							<Content />
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</Layout>
+
+<style>
+	dl {
+		margin: 0;
+	}
+	.entry {
+		padding-block: var(--space-4);
+		border-top: var(--border-width) solid var(--border);
+	}
+	dt {
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-2);
+	}
+	dd {
+		margin: 0;
+	}
+	dd :global(p:last-child) {
+		margin-bottom: 0;
+	}
+</style>

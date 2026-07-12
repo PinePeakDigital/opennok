@@ -26,6 +26,11 @@ const en = {
 		"guide.lastReviewed": "Last reviewed",
 		"glossary.title": "Glossary",
 		"glossary.intro": "Plain-language definitions of the terms used in this guide.",
+		// Canonical, site-wide trust statements — rendered via Disclaimer.astro and
+		// PrivacyPromise.astro (see components/Footer.astro). The privacy promise is a
+		// load-bearing invariant: adding ANY third-party script, remote font, CDN asset,
+		// analytics, or network request that transmits user input breaks "no tracking"
+		// and "never sent anywhere" and must be reconciled with this copy first.
 		"disclaimer.title": "Educational information, not legal advice",
 		"disclaimer.body":
 			"OpenNOK is a general educational guide. It is not legal, financial, medical, or tax advice. Laws vary by place, and legal documents like wills and directives must be prepared for your own jurisdiction. Consult a qualified professional for your situation.",

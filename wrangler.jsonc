@@ -1,0 +1,15 @@
+{
+	"name": "opennok",
+	"compatibility_date": "2025-06-26",
+	"assets": {
+		"directory": "./dist"
+	}
+	// Custom domain is TBD (blocked on naming — see Backlog naming issue).
+	// Until then this deploys to the opennok.<subdomain>.workers.dev URL.
+	// To add a custom domain later, move the zone into this Cloudflare account
+	// and add a "routes" array, e.g.:
+	//   "routes": [
+	//     { "pattern": "example.com", "custom_domain": true },
+	//     { "pattern": "www.example.com", "custom_domain": true }
+	//   ]
+}

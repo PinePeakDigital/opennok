@@ -32,7 +32,7 @@ const en = {
 		"footer.privacy.title": "Nothing you enter leaves your device",
 		"footer.privacy.body":
 			"This site has no accounts and no backend. Anything you type or check off stays in your own browser. We collect no analytics.",
-		"footer.nav": "Footer",
+		"footer.nav": "Footer navigation",
 		"footer.reportError": "Report an error",
 		"footer.license": "Content licensed CC BY 4.0. Code licensed MIT.",
 } as const;

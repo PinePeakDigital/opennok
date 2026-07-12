@@ -1,5 +1,7 @@
 ---
 import { useTranslations } from "../i18n/utils";
+import Disclaimer from "./Disclaimer.astro";
+import PrivacyPromise from "./PrivacyPromise.astro";
 const t = useTranslations();
 
 // External destination — the site has no backend, so error reports go to the
@@ -9,14 +11,8 @@ const reportUrl = "https://github.com/PinePeakDigital/opennok/issues/new";
 
 <footer class="site-footer">
 	<div class="container">
-		<div class="note">
-			<strong>{t("footer.disclaimer.title")}</strong>
-			<p>{t("footer.disclaimer.body")}</p>
-		</div>
-		<div class="note">
-			<strong>{t("footer.privacy.title")}</strong>
-			<p>{t("footer.privacy.body")}</p>
-		</div>
+		<Disclaimer />
+		<PrivacyPromise />
 		<nav class="footer-links" aria-label={t("footer.nav")}>
 			<a href={reportUrl}>{t("footer.reportError")}</a>
 		</nav>
@@ -30,9 +26,6 @@ const reportUrl = "https://github.com/PinePeakDigital/opennok/issues/new";
 		background: var(--surface);
 		padding-block: var(--space-8);
 		font-size: var(--text-sm);
-	}
-	.site-footer .note p {
-		margin-bottom: 0;
 	}
 	.footer-links {
 		display: flex;

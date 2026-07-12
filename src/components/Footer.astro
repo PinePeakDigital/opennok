@@ -1,6 +1,10 @@
 ---
 import { useTranslations } from "../i18n/utils";
 const t = useTranslations();
+
+// External destination — the site has no backend, so error reports go to the
+// public issue tracker. Not user-facing prose, so it lives here, not in ui.ts.
+const reportUrl = "https://github.com/PinePeakDigital/opennok/issues/new";
 ---
 
 <footer class="site-footer">
@@ -13,6 +17,9 @@ const t = useTranslations();
 			<strong>{t("footer.privacy.title")}</strong>
 			<p>{t("footer.privacy.body")}</p>
 		</div>
+		<nav class="footer-links" aria-label={t("footer.nav")}>
+			<a href={reportUrl} rel="noopener">{t("footer.reportError")}</a>
+		</nav>
 		<p class="license">{t("footer.license")}</p>
 	</div>
 </footer>
@@ -27,9 +34,16 @@ const t = useTranslations();
 	.site-footer .note p {
 		margin-bottom: 0;
 	}
+	.footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-6);
+		font-family: var(--font-sans);
+		margin-top: var(--space-6);
+	}
 	.license {
 		color: var(--text-muted);
-		margin-top: var(--space-6);
+		margin-top: var(--space-4);
 		margin-bottom: 0;
 	}
 </style>

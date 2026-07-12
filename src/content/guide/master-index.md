@@ -19,9 +19,9 @@ to all of it. That is why it carries more weight than any single item it lists.
 Without a master index, the people you leave in charge are left doing detective
 work at the worst possible time — opening drawers, guessing at passwords, calling
 around to find out whether a policy even exists. With one, that same search
-becomes a short read.
+becomes a matter of minutes.
 
-A good master index does three things:
+A good master index earns its keep in a few ways:
 
 - **It turns a scavenger hunt into a short read.** Instead of piecing your life
   together from fragments, the finder starts with one page that tells them what
@@ -97,7 +97,9 @@ to get their footing.
 ### Where key documents live
 
 Point to where the signed originals are kept — not copies of the documents
-themselves.
+themselves. This section is about pointing to where documents live, not creating
+them; the rules for wills and directives differ from one place to another, and a
+qualified professional can help you put them in place.
 
 - Will and any updates to it:
 - Power of attorney (for finances):
@@ -130,18 +132,21 @@ know what to look into and who to call.
 This is the most sensitive part, so keep the actual secrets secured elsewhere and
 use this section only to point to them.
 
-- Your phone — how a trusted person can unlock or access it, and where that is
-  kept:
-- Your email — how it can be reached:
+- Your phone — where the way to unlock it is kept (not the passcode itself):
+- Your email — where sign-in access is kept:
 - Your password manager, if you use one — where access to it is secured:
 - Your computer or other devices:
 - Any important online accounts that are not covered by the above:
 
 ### Home, property, and safekeeping
 
-- Home, and how to get in:
+As with the rest of your index, point to where access is kept rather than writing
+codes, combinations, or hiding places directly on the page.
+
+- Home, and where the way in is kept:
 - Vehicles, and where keys and papers are kept:
-- Safe or safe-deposit box — where it is, and how access to it is arranged:
+- Safe or safe-deposit box — where it is, and where the key or combination is kept
+  (not the combination itself):
 - Storage units or other places things are kept:
 
 ### Care and dependents

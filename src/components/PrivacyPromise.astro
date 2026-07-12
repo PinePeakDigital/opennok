@@ -1,0 +1,18 @@
+---
+// Canonical, reusable "no tracking, no backend, nothing leaves your device"
+// privacy promise. Copy lives in ui.ts so the same wording appears everywhere.
+// Rendered site-wide via the Footer, and reusable in any page or slot.
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations();
+---
+
+<div class="note">
+	<strong>{t("privacy.title")}</strong>
+	<p>{t("privacy.body")}</p>
+</div>
+
+<style>
+	.note p:last-child {
+		margin-bottom: 0;
+	}
+</style>

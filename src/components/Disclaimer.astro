@@ -1,0 +1,19 @@
+---
+// Canonical, reusable "educational — not legal advice" disclaimer. Copy lives in
+// ui.ts so it stays consistent everywhere it is shown. Rendered site-wide via the
+// Footer, and can be dropped into a page's "disclaimer" layout slot when a section
+// warrants a prominent, in-context restatement.
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations();
+---
+
+<div class="note">
+	<strong>{t("disclaimer.title")}</strong>
+	<p>{t("disclaimer.body")}</p>
+</div>
+
+<style>
+	.note p:last-child {
+		margin-bottom: 0;
+	}
+</style>

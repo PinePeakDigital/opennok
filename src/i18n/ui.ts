@@ -26,12 +26,12 @@ const en = {
 		"guide.lastReviewed": "Last reviewed",
 		"glossary.title": "Glossary",
 		"glossary.intro": "Plain-language definitions of the terms used in this guide.",
-		"footer.disclaimer.title": "Educational information, not legal advice",
-		"footer.disclaimer.body":
-			"OpenNOK is a general educational guide. It is not legal, financial, medical, or tax advice, and laws vary by place. Consult a qualified professional for your situation.",
-		"footer.privacy.title": "Nothing you enter leaves your device",
-		"footer.privacy.body":
-			"This site has no accounts and no backend. Anything you type or check off stays in your own browser. We collect no analytics.",
+		"disclaimer.title": "Educational information, not legal advice",
+		"disclaimer.body":
+			"OpenNOK is a general educational guide. It is not legal, financial, medical, or tax advice. Laws vary by place, and legal documents like wills and directives must be prepared for your own jurisdiction. Consult a qualified professional for your situation.",
+		"privacy.title": "Nothing you enter leaves your device",
+		"privacy.body":
+			"This site has no accounts, no backend, and no tracking. Anything you type or check off stays in your own browser and is never sent anywhere — we never see it.",
 		"footer.nav": "Footer navigation",
 		"footer.reportError": "Report an error",
 		"footer.license": "Content licensed CC BY 4.0. Code licensed MIT.",

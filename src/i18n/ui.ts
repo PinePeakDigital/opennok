@@ -15,6 +15,7 @@ const en = {
 		"nav.main": "Main navigation",
 		"nav.guide": "The guide",
 		"nav.glossary": "Glossary",
+		"nav.quickStart": "Quick start",
 		"nav.skip": "Skip to main content",
 		"home.intro":
 			"A next-of-kin box gathers the information your loved ones will need if you die or can no longer speak for yourself — kept in one place, on your own terms.",
@@ -31,6 +32,8 @@ const en = {
 		"footer.privacy.title": "Nothing you enter leaves your device",
 		"footer.privacy.body":
 			"This site has no accounts and no backend. Anything you type or check off stays in your own browser. We collect no analytics.",
+		"footer.nav": "Footer navigation",
+		"footer.reportError": "Report an error",
 		"footer.license": "Content licensed CC BY 4.0. Code licensed MIT.",
 } as const;
 

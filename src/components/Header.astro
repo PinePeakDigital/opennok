@@ -1,14 +1,32 @@
 ---
 import { useTranslations } from "../i18n/utils";
 const t = useTranslations();
+
+// Mark the current location for screen readers. aria-current="page" is reserved
+// for the link pointing at the exact current page; a section ancestor (e.g.
+// "The guide" while on /guide/getting-started) gets aria-current="true" instead.
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const currentAria = (href: string): "page" | "true" | undefined =>
+	path === href ? "page" : path.startsWith(href + "/") ? "true" : undefined;
 ---
 
 <header class="site-header">
 	<div class="container header-inner">
 		<a href="/" class="brand">{t("site.title")}</a>
 		<nav aria-label={t("nav.main")}>
-			<a href="/guide">{t("nav.guide")}</a>
-			<a href="/glossary">{t("nav.glossary")}</a>
+			<a href="/guide" aria-current={currentAria("/guide")}>
+				{t("nav.guide")}
+			</a>
+			<a href="/glossary" aria-current={currentAria("/glossary")}>
+				{t("nav.glossary")}
+			</a>
+			<a
+				href="/guide/getting-started"
+				class="cta"
+				aria-current={currentAria("/guide/getting-started")}
+			>
+				{t("nav.quickStart")}
+			</a>
 		</nav>
 	</div>
 </header>
@@ -35,7 +53,24 @@ const t = useTranslations();
 	}
 	nav {
 		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
 		gap: var(--space-6);
 		font-family: var(--font-sans);
+	}
+	nav a[aria-current] {
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.2em;
+		font-weight: 600;
+	}
+	.cta {
+		text-decoration: none;
+		font-weight: 600;
+		padding: var(--space-1) var(--space-3);
+		border: var(--border-width) solid var(--link);
+		border-radius: var(--radius);
+	}
+	.cta:hover {
+		border-color: var(--link-hover);
 	}
 </style>

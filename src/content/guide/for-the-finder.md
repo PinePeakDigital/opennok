@@ -10,9 +10,9 @@ manage their own affairs, we are sorry. Whatever you are feeling right now is
 allowed. This page is written for you — the person who opens the box, not the one
 who built it — and its only job is to help you find your footing.
 
-Someone took the time to gather this information so that you would not have to
-piece it together alone. That was an act of care. You do not have to understand
-all of it today, and you do not have to do any of it perfectly.
+Someone cared enough to gather this information so that you would not have to
+piece it together alone. None of it has to be understood today, and none of it
+has to be done perfectly.
 
 ## First, you can slow down
 
@@ -29,9 +29,8 @@ rested and have someone beside you. Take the time you need.
   documents you will need. It does not expect you to already know how any of it
   works.
 
-If someone is in immediate medical danger, or you are unsure whether a death has
-been formally recorded, those are the exceptions — call emergency services or a
-medical professional first, and come back to the box afterward.
+If someone is in immediate danger, that is the exception — call emergency
+services or a medical professional first, and come back to the box afterward.
 
 ## Start with the master note
 
@@ -65,7 +64,8 @@ not apply.
 3. **Look for wishes about care and arrangements.** Some boxes include notes
    about medical directives, or preferences for a funeral or memorial. If a
    time-sensitive decision is in front of you, these are the pages to check for
-   guidance on what the person would have wanted.
+   guidance on what the person would have wanted — and share what you find with
+   the medical team or care providers, who can tell you how it applies.
 
 4. **Understand how to reach the essentials.** The box may explain how a trusted
    person can access a phone, email, or password manager. These often unlock
